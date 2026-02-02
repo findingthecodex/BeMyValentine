@@ -19,7 +19,14 @@
 
     async Task StartAndGo()
     {
-        await JS.InvokeVoidAsync("playAudio");
+        try
+        {
+            await JS.InvokeVoidAsync("playAudio");
+        }
+        catch
+        {
+            // Ignorera om browsern blockerar ljud
+        }
 
         Nav.NavigateTo("valentine");
     }
