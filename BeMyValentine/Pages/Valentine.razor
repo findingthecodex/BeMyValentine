@@ -1,54 +1,139 @@
-@page "/"
+@page "/valentine"
+@inject IJSRuntime JS
+
+<audio @ref="bgMusic" loop>
+    <source src="audio/Wish.mp3" type="audio/mpeg" />
+</audio>
+<button class="music-btn" @onclick="StartMusic">
+    🎵 Music playing - Say YES to continue
+</button>
 
 <div class="valentine-card">
 
-    <h1>💘 Be My Valentine?</h1>
-
-    <p class="subtitle">
-        Will you be my Valentine, my love? ❤️
-    </p>
-
-    <div class="buttons-area">
-
-        <button class="yes-btn" @onclick="OnYes">
-            Yes 💕
-        </button>
-
-        <button class="no-btn"
-                style="left:@NoXpx; top:@NoYpx;"
-                @onmouseover="MoveNo">
-            No 😅
-        </button>
-
+    <div class="cute-icon">
+        🧸
     </div>
+    
+    <h1>Camilla Will You Be My Valentine?</h1>
+
+    @* <p class="subtitle"> *@
+    @*     Will you be my Valentine, my love? ❤️ *@
+    @* </p> *@
+    
+    @* If Yes - Youtube video *@
+    @if (!showLove)
+    {
+        <div class="buttons-area">
+
+            <button class="yes-btn"
+                    style="transform: scale(@yesScale);"
+                    @onclick="async () => { await StartMusic(); await OnYes(); }">
+                Yes 💕
+            </button>
+
+            <button class="no-btn"
+                    style="left:@NoXpx; top:@NoYpx;"
+                    @onmouseover="MoveNo">
+                No 💔
+            </button>
+
+        </div>
+    }
 
     @if (showLove)
     {
-        <h2 class="result">Yaaay!! 🥰❤️💖</h2>
+        <div class="video-container">
+
+            <h2 class="result">Yaaay!! 🥰❤️</h2>
+
+            <!-- Byt VIDEO_ID till din egen -->
+            <iframe width="100%"
+                    height="250"
+                    src="https://www.youtube.com/embed/jnF0FCNhVwk?start=82&autoplay=1"
+                    title="Valentine Video"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+            </iframe>
+
+        </div>
     }
 
 </div>
+    
+    @* If Yes text *@
+    @* @if (showLove) *@
+    @* { *@
+    @*     <h2 class="result">Yaaay!! 🥰❤️💖</h2> *@
+    @* } *@
+    
+    <!-- Copyright längst ner -->
+    <div style="
+    margin-top: 50vh; 
+    padding-bottom: 16px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;">
+    
+        <p class="copyright">
+            © 2026 FindingTheCode. All rights reserved.
+        </p>
+    </div>
+    
 
-@code {
+    @code {
+        
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                // Säkerställ att audio-elementet finns
+                await Task.Delay(100);
+            }
+        }
 
-    private int NoX = 120;
-    private int NoY = 80;
+        private int NoX = 120;
+        private int NoY = 80;
 
-    private bool showLove = false;
+        private int growCount = 0;
+        private double yesScale = 1.0;
 
-    private Random random = new();
+        private bool showLove = false;
 
-    private string NoXpx => $"{NoX}px";
-    private string NoYpx => $"{NoY}px";
+        private bool musicStarted = false;
 
-    void MoveNo()
-    {
-        NoX = random.Next(0, 260);
-        NoY = random.Next(0, 140);
+        private Random random = new();
+
+        private ElementReference bgMusic;
+
+        private string NoXpx => $"{NoX}px";
+        private string NoYpx => $"{NoY}px";
+
+
+        void MoveNo()
+        {
+            NoX = random.Next(0, 260);
+            NoY = random.Next(0, 140);
+
+            // Max 2–3 gånger (lagom)
+            if (growCount < 2)
+            {
+                yesScale += 0.01;
+                growCount++;
+            }
+        }
+
+
+        async Task StartMusic()
+        {
+            await JS.InvokeVoidAsync("playMusic");
+        }
+
+
+        async Task OnYes()
+        {
+            showLove = true;
+
+            await JS.InvokeVoidAsync("pauseMusic");
+        }
     }
-
-    void OnYes()
-    {
-        showLove = true;
-    }
-}
