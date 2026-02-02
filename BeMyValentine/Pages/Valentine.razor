@@ -1,0 +1,54 @@
+@page "/"
+
+<div class="valentine-card">
+
+    <h1>💘 Be My Valentine?</h1>
+
+    <p class="subtitle">
+        Will you be my Valentine, my love? ❤️
+    </p>
+
+    <div class="buttons-area">
+
+        <button class="yes-btn" @onclick="OnYes">
+            Yes 💕
+        </button>
+
+        <button class="no-btn"
+                style="left:@NoXpx; top:@NoYpx;"
+                @onmouseover="MoveNo">
+            No 😅
+        </button>
+
+    </div>
+
+    @if (showLove)
+    {
+        <h2 class="result">Yaaay!! 🥰❤️💖</h2>
+    }
+
+</div>
+
+@code {
+
+    private int NoX = 120;
+    private int NoY = 80;
+
+    private bool showLove = false;
+
+    private Random random = new();
+
+    private string NoXpx => $"{NoX}px";
+    private string NoYpx => $"{NoY}px";
+
+    void MoveNo()
+    {
+        NoX = random.Next(0, 260);
+        NoY = random.Next(0, 140);
+    }
+
+    void OnYes()
+    {
+        showLove = true;
+    }
+}
