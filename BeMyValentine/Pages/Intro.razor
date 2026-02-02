@@ -17,17 +17,8 @@
 
 @code {
 
-    async Task StartAndGo()
+    private void StartAndGo()
     {
-        try
-        {
-            await JS.InvokeVoidAsync("playAudio");
-        }
-        catch
-        {
-            // Ignorera om browser blockerar ljud
-        }
-
         Nav.NavigateTo("valentine");
     }
 }
