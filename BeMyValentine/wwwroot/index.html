@@ -31,14 +31,18 @@
 
 <!--    Music-->
     <script>
-        window.playMusic = () => {
+        window.playAudio = function () {
             const audio = document.getElementById("bgMusic");
-            if (audio) audio.play();
+            if (audio) {
+                audio.play().catch(e => console.log(e));
+            }
         };
 
-        window.pauseMusic = () => {
+        window.pauseAudio = function () {
             const audio = document.getElementById("bgMusic");
-            if (audio) audio.pause();
+            if (audio) {
+                audio.pause();
+            }
         };
     </script>
 

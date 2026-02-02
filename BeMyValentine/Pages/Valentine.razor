@@ -4,6 +4,7 @@
 <audio @ref="bgMusic" loop>
     <source src="audio/Wish.mp3" type="audio/mpeg" />
 </audio>
+
 <button class="music-btn" @onclick="StartMusic">
     🎵 Music playing - Say YES to continue
 </button>
@@ -100,8 +101,6 @@
 
         private bool showLove = false;
 
-        private bool musicStarted = false;
-
         private Random random = new();
 
         private ElementReference bgMusic;
@@ -122,22 +121,22 @@
                 growCount++;
             }
         }
-
+        
+        private bool musicStarted = false;
 
         async Task StartMusic()
         {
             if (!musicStarted)
             {
                 musicStarted = true;
-                await JS.InvokeVoidAsync("playAudio", bgMusic);
+                await JS.InvokeVoidAsync("playAudio");
             }
         }
-
 
         async Task OnYes()
         {
             showLove = true;
 
-            await JS.InvokeVoidAsync("pauseMusic");
+            await JS.InvokeVoidAsync("pauseAudio");
         }
     }
