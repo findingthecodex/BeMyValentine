@@ -1,8 +1,8 @@
 @page "/valentine"
 @inject IJSRuntime JS
 
-<audio @ref="bgMusic" loop>
-    <source src="audio/Wish.mp3" type="audio/mpeg" />
+<audio id="bgMusic" @ref="bgMusic" loop>
+    <source src="audio/wish.mp3" type="audio/mpeg" />
 </audio>
 <button class="music-btn" @onclick="StartMusic">
     🎵 Music playing - Say YES to continue

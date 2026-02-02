@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeMyValentine</title>
-    <base href="./" />
+    <base href="/BeMyValentine/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -31,14 +31,51 @@
 
 <!--    Music-->
     <script>
-        window.playMusic = () => {
-            const audio = document.getElementById("bgMusic");
-            if (audio) audio.play();
+        // Accept either an ElementReference (DOM element) from Blazor or an id string.
+        window.playAudio = (el) => {
+            try {
+                if (!el) {
+                    const a = document.getElementById("bgMusic");
+                    if (a && a.play) a.play();
+                    return;
+                }
+
+                // If Blazor passes the DOM element directly
+                if (el.tagName && typeof el.play === 'function') {
+                    el.play();
+                    return;
+                }
+
+                // Otherwise try to find by id or selector
+                const maybeEl = (typeof el === 'string') ? document.getElementById(el) : el;
+                if (maybeEl && typeof maybeEl.play === 'function') {
+                    maybeEl.play();
+                }
+            } catch (e) {
+                console.error('playAudio error', e);
+            }
         };
 
-        window.pauseMusic = () => {
-            const audio = document.getElementById("bgMusic");
-            if (audio) audio.pause();
+        window.pauseMusic = (el) => {
+            try {
+                if (!el) {
+                    const a = document.getElementById("bgMusic");
+                    if (a && a.pause) a.pause();
+                    return;
+                }
+
+                if (el.tagName && typeof el.pause === 'function') {
+                    el.pause();
+                    return;
+                }
+
+                const maybeEl = (typeof el === 'string') ? document.getElementById(el) : el;
+                if (maybeEl && typeof maybeEl.pause === 'function') {
+                    maybeEl.pause();
+                }
+            } catch (e) {
+                console.error('pauseMusic error', e);
+            }
         };
     </script>
 
