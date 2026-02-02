@@ -253,6 +253,7 @@ body {
     font-weight: 600;    /* fortfarande tydlig */
 
     margin-bottom: 18px; /* luft under */
+    letter-spacing: 0.5px;
 
     color: #b03060;
 }
