@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BeMyValentine",
   "resources": {
-    "hash": "sha256-OPZxWoOrLcwUpAbQQvQrqSzKQArHNSZ/ZPY+X2cPipg=",
+    "hash": "sha256-IsyPtrWrsEXKI4thBFFzxacYUZU4ViE6jFgSjFuki3Q=",
     "jsModuleNative": {
       "dotnet.native.8.0.23.gfd0duzp0r.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "BeMyValentine.wasm": "sha256-4r80lxWegqwgRgo053SwA6bNRxYuCWWTw9wHHwSPtLo=",
+      "BeMyValentine.wasm": "sha256-S3+zBTQ+mbM1YAHXjNkR+NPDDluqLODKc3x0FlqIGvA=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-PagJDsA81jItTZPcOMNDAYI5h+hp4zJdTkoy+paK4Tg=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-LwwKJhXE6oQZs8ygTXOrlikyNLCgURnK6H9xplE21RI=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-R1Ad2mj0pd/gngfy506hELo1vLd4T0vnf63MRCC0Hjs=",

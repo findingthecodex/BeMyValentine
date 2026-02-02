@@ -126,7 +126,11 @@
 
         async Task StartMusic()
         {
-            await JS.InvokeVoidAsync("playMusic");
+            if (!musicStarted)
+            {
+                musicStarted = true;
+                await JS.InvokeVoidAsync("playAudio", bgMusic);
+            }
         }
 
 
