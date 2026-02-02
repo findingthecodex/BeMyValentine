@@ -105,15 +105,31 @@ code {
 /* Valentine Card */
 
 .valentine-card {
-    max-width: 400px;
+    max-width: 600px;
     margin: 80px auto;
-    padding: 30px;
+    padding: 50px 30px;
     background: linear-gradient(135deg, #ffe6f0, #fff0f6);
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
     position: relative;
     font-family: 'Segoe UI', sans-serif;
+}
+
+/*Valentine card header text*/
+.valentine-card h1 {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    color: #b03060;
+
+    margin-bottom: 14px;
+
+    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.3);
 }
 
 .subtitle {
@@ -162,3 +178,50 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+
+/* Light frame around YouTube */
+
+.video-frame {
+    background: #fff0f7;
+    padding: 14px;
+    border-radius: 22px;
+    box-shadow:
+            0 0 15px rgba(255,105,180,0.6),
+            0 0 30px rgba(255,182,193,0.4);
+}
+
+.video-frame iframe {
+    border-radius: 15px;
+    border: none;
+}
+
+.yes-btn {
+    transition: transform 0.25s ease-in-out;
+    padding: 14px 30px;
+    margin-top: 40px;
+    transition: transform 0.25s ease;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.yes-wrapper {
+    display: inline-block;
+    overflow: hidden;
+}
+
+/*Cute bear on top page*/
+.cute-icon {
+    font-size: 60px;
+    margin-bottom: 12px;
+
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
