@@ -23,11 +23,9 @@
         {
             await JS.InvokeVoidAsync("playAudio");
         }
-        catch
-        {
-            // Ignorera om browsern blockerar ljud
-        }
+        catch { }
 
-        Nav.NavigateTo("valentine");
+        // ✅ SÄKER navigation för GitHub Pages
+        Nav.NavigateTo(Nav.BaseUri + "valentine");
     }
 }
