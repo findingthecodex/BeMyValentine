@@ -235,6 +235,8 @@ body {
 .intro-card {
     width: 350px;
 
+    margin: 100px auto 0;
+
     padding: 50px 35px;
 
     background: linear-gradient(135deg, #fff0f6, #ffe6f0);
@@ -244,8 +246,15 @@ body {
     text-align: center;
 
     box-shadow: 0 8px 25px rgba(255,105,180,0.3);
+}
 
-    margin: auto;
+.intro-card h1 {
+    font-size: 26px;      /* mindre text */
+    font-weight: 600;    /* fortfarande tydlig */
+
+    margin-bottom: 18px; /* luft under */
+
+    color: #b03060;
 }
 
 .start-btn {
