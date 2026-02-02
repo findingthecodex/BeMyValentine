@@ -1,0 +1,33 @@
+@page "/"
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<audio @ref="bgMusic" loop>
+    <source src="audio/Wish.mp3" type="audio/mpeg" />
+</audio>
+
+<div class="intro-card">
+
+    <div class="cute-icon">💌</div>
+
+    <h1>I’ve Got A Question...</h1>
+
+    <button class="start-btn" @onclick="StartAndGo">
+        💖 Open 💖
+    </button>
+
+</div>
+
+@code {
+
+    private ElementReference bgMusic;
+
+    async Task StartAndGo()
+    {
+        await JS.InvokeVoidAsync("playMusic");
+
+        await Task.Delay(300);
+
+        Nav.NavigateTo("/valentine");
+    }
+}

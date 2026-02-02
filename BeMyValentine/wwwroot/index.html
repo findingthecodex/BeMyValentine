@@ -28,6 +28,20 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+
+<!--    Music-->
+    <script>
+        window.playMusic = () => {
+            const audio = document.getElementById("bgMusic");
+            if (audio) audio.play();
+        };
+
+        window.pauseMusic = () => {
+            const audio = document.getElementById("bgMusic");
+            if (audio) audio.pause();
+        };
+    </script>
+
 </body>
 
 </html>
