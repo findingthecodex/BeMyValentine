@@ -2,26 +2,58 @@
 
 En Blazor WebAssembly-app för Alla Hjärtans Dag! 💖
 
-## GitHub Pages Deployment
+## 🌐 Live Demo
+https://findingthecodex.github.io/BeMyValentine/
 
-Denna app är konfigurerad för automatisk deployment till GitHub Pages med GitHub Actions.
+## 🚀 GitHub Pages Deployment
 
-### Hur det fungerar
+Denna app är deployad till GitHub Pages via **Deploy from a branch**.
 
-1. När du pushar till `main`-branchen triggas workflow:en automatiskt
-2. GitHub Actions bygger Blazor-projektet med `dotnet publish`
-3. Base href i `index.html` uppdateras automatiskt för GitHub Pages
-4. Den färdiga siten deployas till `gh-pages`-branchen
-5. Siten publiceras på: `https://<username>.github.io/BeMyValentine/`
+### Hur deployment fungerar
 
-### Manuell deploy
+1. **Source-koden** finns på `main`-branchen
+2. **Byggda filer** finns på `gh-pages-deploy`-branchen
+3. GitHub Pages serverar direkt från `gh-pages-deploy`-branchen
 
-Du kan också köra workflow:en manuellt från Actions-fliken i GitHub.
+### Hur du uppdaterar sidan
 
-### Första gången
+När du vill deploya ändringar:
 
-Efter första deploy:en, gå till Repository Settings → Pages och verifiera att:
-- Source är satt till `gh-pages` branch
-- Root är vald som mapp
+```bash
+# 1. Gör ändringar på main-branchen
+git checkout main
+# gör dina ändringar...
+git add .
+git commit -m "Din ändring"
+git push origin main
 
-GitHub kommer vanligtvis att auto-konfigurera detta när `gh-pages`-branchen skapas.
+# 2. Bygg projektet
+dotnet publish ./BeMyValentine/BeMyValentine.csproj -c Release -o publish
+
+# 3. Byt till deploy-branchen
+git checkout gh-pages-deploy
+
+# 4. Kopiera de nya filerna
+cp -r publish/wwwroot/* .
+
+# 5. Uppdatera base href (om behövs)
+sed -i '' 's|<base href="/" />|<base href="/BeMyValentine/" />|g' index.html
+
+# 6. Commit och pusha
+git add -A
+git commit -m "Update deployment"
+git push origin gh-pages-deploy
+
+# 7. Byt tillbaka till main
+git checkout main
+```
+
+### Första gången (redan gjort)
+
+Gå till **Settings → Pages** på GitHub och konfigurera:
+- **Source:** Deploy from a branch
+- **Branch:** `gh-pages-deploy`
+- **Folder:** `/ (root)`
+
+Sidan kommer vara live inom 1-2 minuter efter push! 💖
+
