@@ -63,3 +63,10 @@ build_output/
 publish_final/
 
 .idea/
+
+bin/
+obj/
+site/
+publish*/
+.idea/
+.vs/
