@@ -2,10 +2,6 @@
 @inject NavigationManager Nav
 @inject IJSRuntime JS
 
-<audio @ref="bgMusic" loop>
-    <source src="audio/Wish.mp3" type="audio/mpeg" />
-</audio>
-
 <div class="intro-card">
 
     <div class="cute-icon">💌</div>
@@ -21,14 +17,17 @@
 
 @code {
 
-    private ElementReference bgMusic;
-
     async Task StartAndGo()
     {
-        await JS.InvokeVoidAsync("playMusic");
+        try
+        {
+            await JS.InvokeVoidAsync("playAudio");
+        }
+        catch
+        {
+            // Ignorera om browser blockerar ljud
+        }
 
-        await Task.Delay(300);
-
-        Nav.NavigateTo("/valentine");
+        Nav.NavigateTo("valentine");
     }
 }

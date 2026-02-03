@@ -53,4 +53,20 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+# Build output
+bin/
+obj/
+publish/
+build_output/
+
+.idea/publish_new/
+publish_final/
+
 .idea/
+
+bin/
+obj/
+site/
+publish*/
+.idea/
+.vs/
