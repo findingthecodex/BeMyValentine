@@ -59,4 +59,5 @@ obj/
 publish/
 build_output/
 
-.idea/
+.idea/publish_new/
+publish_final/
