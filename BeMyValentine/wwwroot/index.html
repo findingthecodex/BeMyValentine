@@ -12,8 +12,12 @@
     <link href="BeMyValentine.styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<audio id="bgMusic" src="audio/Wish.mp3"></audio>
+
 <body>
+    <audio id="bgMusic" loop>
+        <source src="audio/Wish.mp3" type="audio/mpeg" />
+    </audio>
+    
     <div id="app">
         <svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
@@ -27,9 +31,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
 
-<!--    Music-->
     <script>
         window.playAudio = function () {
             const audio = document.getElementById("bgMusic");
@@ -45,6 +47,8 @@
             }
         };
     </script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
 
 </body>
 

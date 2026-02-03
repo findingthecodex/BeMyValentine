@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeMyValentine</title>
-    <base href="./" />
+    <base href="/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <audio id="bgMusic" loop>
+        <source src="audio/Wish.mp3" type="audio/mpeg" />
+    </audio>
+    
     <div id="app">
         <svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
@@ -27,20 +31,24 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
 
-<!--    Music-->
     <script>
-        window.playMusic = () => {
+        window.playAudio = function () {
             const audio = document.getElementById("bgMusic");
-            if (audio) audio.play();
+            if (audio) {
+                audio.play().catch(e => console.log(e));
+            }
         };
 
-        window.pauseMusic = () => {
+        window.pauseAudio = function () {
             const audio = document.getElementById("bgMusic");
-            if (audio) audio.pause();
+            if (audio) {
+                audio.pause();
+            }
         };
     </script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
 
 </body>
 
